@@ -1,0 +1,17 @@
+parameters:
+    elNombreDeLaSolucion: '' #se cambia por el nombre del proyecto, ejem: Bccr.Sinpe.Pin.Autorizacion
+    laVersionDelBuild: ''
+
+jobs:
+  - job: "compilacion"
+    workspace:
+      clean: outputs
+    pool:
+      name: Default
+    steps:
+      - checkout: self
+        persistCredentials: true
+        
+      - powershell : |
+          Write-Host "Hola, ¡sí pude acceder a GitHub!.... $(elNombreDeLaSolucion)"
+        displayName: 'Escribir mensaje en consola'
